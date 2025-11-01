@@ -1,0 +1,8 @@
+.options{
+    margin: 10px 0;
+}
+.eachOption{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
