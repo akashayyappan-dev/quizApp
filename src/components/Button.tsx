@@ -1,10 +1,10 @@
-import { ToastContainer, toast } from 'react-toastify';
-interface Props {
-  setQuestionState: React.Dispatch<number>
-  setSelectedAnswer: React.Dispatch<string>
-  selectedAnswer: string
+import type React from "react"
+
+
+interface Props{
+  handleClick:React.Dispatch<void>
 }
-const Button: React.FC<Props> = ({ setQuestionState, setSelectedAnswer, selectedAnswer }) => {
+const Button : React.FC<Props> = ({handleClick}) => {
   return (
     <>
       <button style={{
@@ -13,17 +13,8 @@ const Button: React.FC<Props> = ({ setQuestionState, setSelectedAnswer, selected
         border: "none",
         borderRadius: "3px",
         cursor: "pointer"
-      }} onClick={() => {
-        if (selectedAnswer) {
-          setQuestionState(prev => prev + 1)
-        }
-        else{
-          toast("Please Select Any Option");
-        }
-        setSelectedAnswer("");
-        
-      }}>Next</button>
-       <ToastContainer/>
+      }}
+      onClick={()=>handleClick()}>Next</button>
     </>
   )
 }

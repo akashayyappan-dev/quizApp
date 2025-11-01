@@ -8,8 +8,9 @@ interface Props{
         answer:string
     }
     setSelectedAnswer:React.Dispatch<string>
+    selectedAnswer:string
 }
-const QuizFrame : React.FC<Props> = ({question,setSelectedAnswer}) => {
+const QuizFrame : React.FC<Props> = ({question,setSelectedAnswer,selectedAnswer}) => {
     function handleClicK(val:string){
         setSelectedAnswer(val);
     }
@@ -24,7 +25,7 @@ const QuizFrame : React.FC<Props> = ({question,setSelectedAnswer}) => {
         <div className="options">
             {question.options.map((ele,i)=>(
                 <div className="eachOption">
-                    <input type="radio" name="quiz" id={ele+"_"+i} value={ele} onChange={(e)=>{handleClicK(e.target.value)}}/>
+                    <input type="radio" name="quiz" checked={selectedAnswer===ele} id={ele+"_"+i} value={ele} onChange={(e)=>{handleClicK(e.target.value)}}/>
                     <label className="optionNames" htmlFor={ele+"_"+i} >{ele}</label>
                 </div>
             ))}
